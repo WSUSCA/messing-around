@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Career Ready Journey</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="header__brand">
+      <div class="brand__mark">CRJ</div>
+      <div class="brand__text">
+        <h1>Career Ready Journey</h1>
+        <p>Keep every student on track to career confidence.</p>
+      </div>
+    </div>
+    <div class="header__actions">
+      <button class="ghost" id="demo-data">Reset Demo Data</button>
+      <button class="primary" id="download-report">Download CSV</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel panel--highlight">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Program health</p>
+          <h2>At-a-glance</h2>
+        </div>
+        <div class="filters">
+          <label>
+            <span>Filter by stage</span>
+            <select id="stage-filter">
+              <option value="all">All</option>
+            </select>
+          </label>
+          <label>
+            <span>Search students</span>
+            <input id="search" type="search" placeholder="Name, focus, or graduation year" />
+          </label>
+        </div>
+      </div>
+      <div class="stats" id="stats"></div>
+    </section>
+
+    <section class="panel">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Add learner</p>
+          <h2>Create a student record</h2>
+        </div>
+        <p class="muted">Capture the essentials and drop them onto the journey. Everything saves automatically.</p>
+      </div>
+      <form class="form" id="student-form">
+        <div class="field">
+          <label for="name">Full name</label>
+          <input id="name" name="name" required />
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="focus">Career focus</label>
+          <input id="focus" name="focus" placeholder="Product design, Data, Nursing..." />
+        </div>
+        <div class="field-group">
+          <div class="field">
+            <label for="graduation">Graduation year</label>
+            <input id="graduation" name="graduation" type="number" min="2024" max="2040" required />
+          </div>
+          <div class="field">
+            <label for="stage">Current stage</label>
+            <select id="stage" name="stage"></select>
+          </div>
+        </div>
+        <div class="field">
+          <label for="notes">Notes</label>
+          <textarea id="notes" name="notes" rows="3" placeholder="Next coaching steps, internship leads, etc."></textarea>
+        </div>
+        <button type="submit" class="primary full">Add student</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <div class="panel__header">
+        <div>
+          <p class="eyebrow">Journey</p>
+          <h2>Students</h2>
+        </div>
+        <p class="muted" id="results-count"></p>
+      </div>
+      <div class="student-grid" id="students"></div>
+    </section>
+  </main>
+
+  <template id="student-template">
+    <article class="student">
+      <header class="student__header">
+        <div>
+          <p class="eyebrow student__grad"></p>
+          <h3 class="student__name"></h3>
+          <p class="muted student__email"></p>
+        </div>
+        <div class="student__stage">
+          <label class="muted">Stage</label>
+          <select class="stage-select"></select>
+        </div>
+      </header>
+      <p class="student__focus"></p>
+      <p class="muted student__notes"></p>
+      <div class="progress">
+        <div class="progress__bar">
+          <div class="progress__fill"></div>
+        </div>
+        <p class="muted progress__label"></p>
+      </div>
+      <div class="milestones"></div>
+      <footer class="student__footer">
+        <button class="ghost ghost--danger delete">Remove</button>
+      </footer>
+    </article>
+  </template>
+
+  <script src="script.js"></script>
+</body>
+</html>
